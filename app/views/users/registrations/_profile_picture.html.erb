@@ -1,0 +1,5 @@
+<% if picture.present? %>
+  <%= image_tag(picture.image.url(:thumb)) %>
+<% else %>
+  <%= image_tag('missing.png', size: '100x100', alt: 'Profile Picture Unavailable') %>
+<% end %>
