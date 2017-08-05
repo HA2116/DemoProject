@@ -11,9 +11,19 @@
 </p>
 
 <p>
+  <strong>
+    Posters:
+  </strong>
+</p>
+
+<%= render partial: "posters", locals: { posters: @movie.images } %>
+
+<p>
   <strong>Trailer:</strong>
   <%= raw @movie.trailer %>
 </p>
+
+<br/>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
