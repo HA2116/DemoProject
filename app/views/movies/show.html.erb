@@ -43,7 +43,7 @@
 
 <% if user_signed_in? %>
   <div>
-    <h1>Add review</h1>
+    <h1>Add Review:</h1>
     <%= render partial: 'reviews/form', locals: { remote_form: true }%>
   </div>
 <% end %>
@@ -57,7 +57,27 @@
 
 <br/>
 
+<% if user_signed_in? %>
+  <div>
+  <h2>Add Rating:</h2>
+  <div class='star-rating' data-score=<%= @rating_score %>></div>
+  </div>
+<% end %>
+
+<div>
+  <h2>Rating:</h2>
+  <div class='avg-star-rating' data-score=<%= @average_rating %> ></div>
+</div>
+
+<br/>
+
 <%= paginate @reviews %>
+
+<% if user_signed_in? %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :movie_id, @movie.id %>
+  <%= hidden_field_tag :rating_id, @rating.id %>
+<% end %>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
