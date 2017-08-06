@@ -19,6 +19,14 @@
     <%= f.label :description %><br>
     <%= f.cktext_area :description, rows: 10 %>
   </div>
+  <div class="field">
+    <%= f.label :featured %><br>
+    <%= f.check_box :featured %>
+  </div>
+  <div class="field">
+    <%= f.label :approved %><br>
+    <%= f.check_box :approved %>
+  </div>
   <span>Select genre:</span>
   <%= f.select :genre, options_for_select(Movie::GENRES.map {|genre| [genre.titleize, genre]}), {} %>
   <div class="field">

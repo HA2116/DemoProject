@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  paginates_per 3
 
   GENRES = ['comedy', 'horror', 'crime', 'action', 'drama', 'thriller', 'fantasy', 'animation']
 
@@ -11,7 +12,18 @@ class Movie < ActiveRecord::Base
   has_many :castings, dependent: :destroy
   has_many :actors, through: :castings
 
-  scope :latest, -> { order(release_date: :desc) }
-  scope :featured, -> { where(featured: true) }
+  scope :approved, -> { where(approved: true) }
+  scope :featured, -> { where(approved: true, featured: true) }
+  scope :latest, -> { where(approved: true).order(release_date: :desc) }
+
+  def self.get_filtered_movies(movie_filter)
+    if movie_filter == 'latest'
+      self.latest
+    elsif movie_filter == 'featured'
+      self.featured
+    else
+      self.approved
+    end
+  end
 
 end

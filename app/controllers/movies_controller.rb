@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    params[:filter].present? ? @movies = Movie.send(params[:filter].to_sym) : @movies = Movie.all
+    @movies = Movie.get_filtered_movies(params[:filter]).page(params[:page])
   end
 
   # GET /movies/1
@@ -75,7 +75,7 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :trailer,:genre, :release_date, images_attributes: [:id, :image, :_destroy], actor_ids: [])
+      params.require(:movie).permit(:title, :description, :featured, :approved, :trailer, :genre, :release_date, images_attributes: [:id, :image, :_destroy], actor_ids: [])
     end
 
 end
