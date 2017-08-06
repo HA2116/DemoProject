@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806000603) do
+ActiveRecord::Schema.define(version: 20170806105435) do
 
   create_table "actors", force: :cascade do |t|
     t.string   "name",       limit: 20,    null: false
@@ -45,13 +45,15 @@ ActiveRecord::Schema.define(version: 20170806000603) do
   add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.string   "trailer",     limit: 255
-    t.boolean  "featured",                  default: false
-    t.boolean  "approved",                  default: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.string   "title",        limit: 255
+    t.text     "description",  limit: 65535
+    t.string   "trailer",      limit: 255
+    t.boolean  "featured",                   default: false
+    t.boolean  "approved",                   default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.datetime "release_date",                               null: false
+    t.string   "genre",        limit: 30,                    null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,17 +11,25 @@
 </p>
 
 <p>
-   <strong>Cast:</strong>
+  <strong>Genre:</strong>
+  <%= @movie.genre.titleize %>
 </p>
 
- <%= render partial: "actors", locals: { movie_actors: @movie.actors } %>
-
- <br/>
+<p>
+  <strong>Release Date:</strong>
+  <%= @movie.release_date %>
+</p>
 
 <p>
-  <strong>
-    Posters:
-  </strong>
+  <strong>Cast:</strong>
+</p>
+
+<%= render partial: "actors", locals: { movie_actors: @movie.actors } %>
+
+<br/>
+
+<p>
+  <strong>Posters:</strong>
 </p>
 
 <%= render partial: "posters", locals: { posters: @movie.images } %>

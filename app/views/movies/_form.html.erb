@@ -19,13 +19,18 @@
     <%= f.label :description %><br>
     <%= f.cktext_area :description, rows: 10 %>
   </div>
+  <span>Select genre:</span>
+  <%= f.select :genre, options_for_select(Movie::GENRES.map {|genre| [genre.titleize, genre]}), {} %>
+  <div class="field">
+    <%= f.label :release_date %><br>
+    <%= f.datetime_select :release_date %>
+  </div>
   <div class="field">
     <%= f.label :trailer %><br>
     <%= f.text_field :trailer %>
   </div>
-
+  <span>Select actor(s):</span>
   <%= f.select :actor_ids, options_for_select(@actors_for_selection), {}, { multiple: true, size: 5 } %>
-
   <div class="form-actions">
     <%= f.label :images %>
     <%= f.fields_for :images do |image| %>
