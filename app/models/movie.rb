@@ -11,4 +11,7 @@ class Movie < ActiveRecord::Base
   has_many :castings, dependent: :destroy
   has_many :actors, through: :castings
 
+  scope :latest, -> { order(release_date: :desc) }
+  scope :featured, -> { where(featured: true) }
+
 end

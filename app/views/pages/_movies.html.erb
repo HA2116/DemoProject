@@ -1,0 +1,19 @@
+<% movies.each do |movie| %>
+  <div class='col-md-4' align='center'>
+    <div class='text-center'>
+      <strong><%= title_titleize(movie.title) %></strong>
+    </div>
+    <% if movie.images.present? %>
+      <%= link_to(image_tag(movie.images.first.image.url(:medium)), movie) %>
+    <% else %>
+      <%= image_tag('poster-not-available.jpg', size: '300x300', alt: 'Movie Poster Not Available') %>
+    <% end %>
+    <div class='clearfix'></div>
+    <br/>
+    <div align='center'>
+      <%= link_to 'Show', movie, class: 'btn btn-sm btn-success' %>
+      <%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+    </div>
+  </div>
+<% end %>
