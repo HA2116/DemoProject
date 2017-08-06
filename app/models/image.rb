@@ -4,4 +4,6 @@ class Image < ActiveRecord::Base
   validates_attachment_presence :image
 
   belongs_to :imageable, polymorphic: true
+  has_many :reviews, dependent: :destroy
+
 end

@@ -41,5 +41,23 @@
 
 <br/>
 
+<% if user_signed_in? %>
+  <div>
+    <h1>Add review</h1>
+    <%= render partial: 'reviews/form', locals: { remote_form: true }%>
+  </div>
+<% end %>
+
+<div>
+  <h2>Reviews:</h2>
+  <div id='reviews-container'>
+    <%= render @reviews %>
+  </div>
+</div>
+
+<br/>
+
+<%= paginate @reviews %>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
