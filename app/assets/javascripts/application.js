@@ -16,3 +16,5 @@
 //= require_tree .
 //= require ckeditor/init
 //= require jquery_nested_form
+//= require jquery
+//= require bootstrap-sprockets
