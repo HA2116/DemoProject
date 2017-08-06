@@ -23,6 +23,9 @@
     <%= f.label :trailer %><br>
     <%= f.text_field :trailer %>
   </div>
+
+  <%= f.select :actor_ids, options_for_select(@actors_for_selection), {}, { multiple: true, size: 5 } %>
+
   <div class="form-actions">
     <%= f.label :images %>
     <%= f.fields_for :images do |image| %>
